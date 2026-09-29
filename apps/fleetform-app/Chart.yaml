@@ -1,0 +1,5 @@
+apiVersion: v2
+name: fleetform-app
+description: Demo app for testing multi-cluster GitOps delivery
+version: 0.1.0
+appVersion: "1.29"
