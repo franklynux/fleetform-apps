@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: fleetform-apps
+  namespace: argocd
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: '{{name}}-fleetform-app'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/franklynux/fleetform-apps.git
+        targetRevision: main
+        path: apps/fleetform-app
+        helm:
+          valueFiles:
+            - ../../values.yaml
+            - base/values.yaml
+            - 'overlays/{{name}}/values.yaml'
+      destination:
+        server: '{{server}}'
+        namespace: fleetform-app
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
