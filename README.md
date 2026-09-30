@@ -5,6 +5,7 @@ drive automated app delivery across a hub-spoke cluster topology, with Kyverno
 enforcing security and hygiene guardrails at admission time.
 
 ![Architecture diagram](imgs/architecture.png)
+*Fig 1: Fleetform hub-spoke architecture*
 
 ## What this proves
 
@@ -58,8 +59,10 @@ fleetform-apps/
 ## Fleet view
 
 ![Argo CD dashboard showing both apps synced across hub and spoke](imgs/argocd_UI_healthy_&_synced.png)
+*Fig 2: Argo CD dashboard showing both apps synced across hub and spoke*
 
 ![Argo CD ApplicationSet driving multi-cluster delivery from a single source](imgs/argocd_UI_applicationset.png)
+*Fig 3: Argo CD ApplicationSet driving multi-cluster delivery from a single source*
 
 Both clusters show `Synced` / `Healthy` status, driven entirely from the
 single `ApplicationSet` — no manual per-cluster configuration.
@@ -91,12 +94,16 @@ All four are set to `validationFailureAction: Enforce` — violations are
 blocked at admission, not just logged.
 
 ![Kyverno blocking a privileged container — disallow-privileged policy in action](imgs/kyverno_test_-_block_privileged_containers.png)
+*Fig 4: Kyverno blocking a privileged container — disallow-privileged policy in action*
 
 ![Kyverno rejecting an image with :latest tag — disallow-latest-tag policy in action](imgs/kyverno_test_-_disallowed_latest_tag.png)
+*Fig 5: Kyverno rejecting an image with :latest tag — disallow-latest-tag policy in action*
 
 ![Kyverno blocking a pod missing team/managed-by labels — require-labels policy in action](imgs/kyverno_test_-_require_labels.png)
+*Fig 6: Kyverno blocking a pod missing team/managed-by labels — require-labels policy in action*
 
 ![Kyverno blocking a pod with no CPU/memory requests or limits — require-resources policy in action](imgs/kyverno_test_-_resource_request_limits.png)
+*Fig 7: Kyverno blocking a pod with no CPU/memory requests or limits — require-resources policy in action*
 
 ## GitOps self-healing, demonstrated
 
@@ -111,8 +118,10 @@ Argo CD's `selfHeal` reverted this back to the 2 replicas declared in
 `overlays/spoke/values.yaml` within seconds, with no manual intervention.
 
 ![Argo CD detecting out-of-sync state after manual kubectl scale to 5 replicas](imgs/selfheal_test_-_argocd-1.png)
+*Fig 8: Argo CD detecting out-of-sync state after manual kubectl scale to 5 replicas*
 
 ![Argo CD self-heal complete — replicas reverted to 2 as declared in git](imgs/selfheal_test_-_argocd-2.png)
+*Fig 9: Argo CD self-heal complete — replicas reverted to 2 as declared in git*
 
 ## Tech
 
