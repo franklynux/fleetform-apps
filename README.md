@@ -31,27 +31,29 @@ enforcing security and hygiene guardrails at admission time.
   deliberately kept apart so Argo CD never has visibility into Terraform state
   or cloud credentials.
 
-  fleetform-apps/
-├── values.yaml # repo-wide defaults (labels, annotations)
+```
+fleetform-apps/
+├── values.yaml                          # repo-wide defaults (labels, annotations)
 ├── apps/
-│ └── fleetform-app/
-│ ├── Chart.yaml
-│ ├── templates/
-│ ├── base/values.yaml # app defaults
-│ └── overlays/
-│ ├── in-cluster/values.yaml # hub-specific overrides
-│ └── spoke/values.yaml # spoke-specific overrides
+│   └── fleetform-app/
+│       ├── Chart.yaml
+│       ├── templates/
+│       ├── base/values.yaml             # app defaults
+│       └── overlays/
+│           ├── in-cluster/values.yaml   # hub-specific overrides
+│           └── spoke/values.yaml        # spoke-specific overrides
 └── platform/
-├── argocd/
-│ ├── values.yaml # Argo CD Helm install config
-│ └── applicationsets/
-│ └── fleetform-app.yaml # the cluster-generator ApplicationSet
-└── kyverno/
-└── policies/
-├── require-resources.yaml
-├── disallow-latest-tag.yaml
-├── require-labels.yaml
-└── disallow-privileged.yaml
+    ├── argocd/
+    │   ├── values.yaml                  # Argo CD Helm install config
+    │   └── applicationsets/
+    │       └── fleetform-app.yaml       # the cluster-generator ApplicationSet
+    └── kyverno/
+        └── policies/
+            ├── require-resources.yaml
+            ├── disallow-latest-tag.yaml
+            ├── require-labels.yaml
+            └── disallow-privileged.yaml
+```
 
 ## Fleet view
 
