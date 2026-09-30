@@ -1,6 +1,7 @@
 commonLabels:
   managed-by: fleetform
   onboarded-via: gitops
+  team: platform
 
 commonAnnotations:
   fleetform.io/repo: fleetform-apps
