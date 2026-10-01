@@ -4,7 +4,7 @@ Multi-cluster GitOps self-service platform on AWS EKS. Argo CD ApplicationSets
 drive automated app delivery across a hub-spoke cluster topology, with Kyverno
 enforcing security and hygiene guardrails at admission time.
 
-![Architecture diagram](imgs/architecture.png)
+![Architecture diagram](imgs/fleetform_architecture.png)
 *Fig 1: Fleetform hub-spoke architecture*
 
 ## What this proves
